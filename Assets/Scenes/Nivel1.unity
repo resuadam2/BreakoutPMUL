@@ -1106,6 +1106,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LoseTrigger
       objectReference: {fileID: 0}
+    - target: {fileID: 5616989996742836566, guid: 877223fabd2375a67aca2e90fb584224, type: 3}
+      propertyPath: m_TagString
+      value: DeathZone
+      objectReference: {fileID: 0}
     - target: {fileID: 8838726229989519384, guid: 877223fabd2375a67aca2e90fb584224, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

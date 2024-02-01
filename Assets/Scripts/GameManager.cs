@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     private int blocksLeft; // Bloques restantes en la escena
 
+    public int vidas;
+
     private void Awake()
     {
         // Patrón Singleton
@@ -48,5 +50,29 @@ public class GameManager : MonoBehaviour
     public void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Recargamos la escena actual
+    }
+
+    public void LoseLife()
+    {
+        vidas--; // Restamos una vida
+         if (vidas <= 0)
+        {
+            Debug.Log("Game Over!");
+            SceneManager.LoadScene("GameOver");
+            // TODO: Modificar GameOver para retry
+        } else {
+            ResetLevel(); // Recargamos la escena
+        }       
+    }
+
+    public void AddLife()
+    {
+        vidas++; // Añadimos una vida
+    }
+
+    public void ResetLevel()
+    {
+        FindObjectOfType<Player>().ResetPlayer(); // Reseteamos la posición del jugador
+        FindObjectOfType<Ball>().ResetBall(); // Reseteamos la posición de la bola
     }
 }

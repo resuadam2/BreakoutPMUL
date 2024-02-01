@@ -12,11 +12,13 @@ public class Player : MonoBehaviour
     */
     [SerializeField] private float bound = 4.5f; // x axis bound 
 
+    private Vector2 startPos; // Posición inicial del jugador
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        startPos = transform.position; // Guardamos la posición inicial del jugador
     }
 
     // Update is called once per frame
@@ -35,5 +37,10 @@ public class Player : MonoBehaviour
         // Mathf.Clamp nos permite limitar un valor entre un mínimo y un máximo
         playerPosition.x = Mathf.Clamp(playerPosition.x + moveInput * speed * Time.deltaTime, -bound, bound);
         transform.position = playerPosition;
+    }
+
+    public void ResetPlayer()
+    {
+        transform.position = startPos; // Posición inicial del jugador
     }
 }

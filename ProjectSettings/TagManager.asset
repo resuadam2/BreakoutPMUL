@@ -6,6 +6,7 @@ TagManager:
   tags:
   - block
   - ball
+  - DeathZone
   layers:
   - Default
   - TransparentFX

@@ -8,7 +8,8 @@ public class LoseTrigger : MonoBehaviour
     {
         if (collision.CompareTag("ball")) // Si colisionamos con la bola
         {
-            GameManager.Instance.ReloadScene(); // Recargamos la escena
+            // GameManager.Instance.ReloadScene(); // Recargamos la escena
+            GameManager.Instance.LoseLife();
         }
     }
 }

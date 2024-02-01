@@ -9,9 +9,12 @@ public class Ball : MonoBehaviour
     private Rigidbody2D rb;
     private bool isMoving = false; // Para evitar que la bola se mueva antes de que el jugador la lance
     // Start is called before the first frame update
+    private Vector2 startPos; // Posición inicial de la bola
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        startPos = transform.position; // Guardamos la posición inicial de la bola
     }
 
     // Update is called once per frame
@@ -58,5 +61,13 @@ public class Ball : MonoBehaviour
             transform.parent = null; // Desvinculamos la bola del jugador
             rb.velocity = initialSpeed; // Le asignamos una velocidad inicial a la bola
         }
+    }
+
+    public void ResetBall()
+    {
+        isMoving = false; // La bola ya no se está moviendo
+        rb.velocity = Vector2.zero; // La velocidad de la bola es 0
+        transform.parent = GameObject.FindGameObjectsWithTag("Player")[0].transform; // La bola es hija del jugador
+        transform.position = startPos; // Posición inicial de la bola
     }
 }
