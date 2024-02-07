@@ -12,8 +12,7 @@ public class GameManager : MonoBehaviour
     public int vidas = 3;
 
     [SerializeField] private int pointsPerBlock = 10; // Puntos por bloque
-    private int points = 0; // Puntos actuales
-
+    public int points = 0; // Puntos actuales
 
 
     private void Awake()
@@ -30,14 +29,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Start()
+    public void LoadBlocks()
     {
         /* FindGameObjectsWithTag nos permite obtener todos los objetos con una etiqueta determinada
          y nos los devuelve en un array de GameObjects
         */
         blocksLeft = GameObject.FindGameObjectsWithTag("block").Length; // Obtenemos el número de bloques en la escena
-        FindObjectOfType<UIManager>().SetScore(points); // Mostramos los puntos actuales
-        FindObjectOfType<UIManager>().SetLifes(vidas);
+        Debug.Log("Blocks left: " + blocksLeft);
     }
 
     public void BlockDestroyed()

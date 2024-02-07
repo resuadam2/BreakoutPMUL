@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    TMPro.TextMeshProUGUI text;
+    [SerializeField] TMPro.TextMeshProUGUI text;
     [SerializeField] private GameObject[] lifes;
+    [SerializeField] GameManager gameManager;
 
     void Awake()
     {
         text = GameObject.Find("Score").GetComponent<TMPro.TextMeshProUGUI>();
         lifes = GameObject.FindGameObjectsWithTag("life");
+        gameManager = GameManager.Instance;
+        gameManager.LoadBlocks();
+    }
+
+    void Start()
+    {
+        SetScore(gameManager.points);
+        SetLifes(gameManager.vidas);
     }
 
    public void AddScore(int score)
