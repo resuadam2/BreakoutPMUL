@@ -9,7 +9,12 @@ public class GameManager : MonoBehaviour
 
     private int blocksLeft; // Bloques restantes en la escena
 
-    public int vidas;
+    public int vidas = 3;
+
+    [SerializeField] private int pointsPerBlock = 10; // Puntos por bloque
+    private int points = 0; // Puntos actuales
+
+
 
     private void Awake()
     {
@@ -21,6 +26,7 @@ public class GameManager : MonoBehaviour
         else // Si no existe una instancia de GameManager
         {
             Instance = this; // La creamos
+            DontDestroyOnLoad(gameObject); // No se destruirá al cargar una nueva escena
         }
     }
 
@@ -30,11 +36,15 @@ public class GameManager : MonoBehaviour
          y nos los devuelve en un array de GameObjects
         */
         blocksLeft = GameObject.FindGameObjectsWithTag("block").Length; // Obtenemos el número de bloques en la escena
+        FindObjectOfType<UIManager>().SetScore(points); // Mostramos los puntos actuales
+        FindObjectOfType<UIManager>().SetLifes(vidas);
     }
 
     public void BlockDestroyed()
     {
         blocksLeft--; // Restamos un bloque
+        FindObjectOfType<UIManager>().AddScore(pointsPerBlock); // Añadimos puntos
+        points += pointsPerBlock; // Añadimos puntos
         if (blocksLeft <= 0) // Si no quedan bloques
         {
             Debug.Log("Level completed!");
@@ -54,8 +64,10 @@ public class GameManager : MonoBehaviour
 
     public void LoseLife()
     {
+        
         vidas--; // Restamos una vida
-         if (vidas <= 0)
+        FindObjectOfType<UIManager>().LoseLife();
+        if (vidas <= 0)
         {
             Debug.Log("Game Over!");
             SceneManager.LoadScene("GameOver");
@@ -68,6 +80,7 @@ public class GameManager : MonoBehaviour
     public void AddLife()
     {
         vidas++; // Añadimos una vida
+        FindObjectOfType<UIManager>().AddLife();
     }
 
     public void ResetLevel()
