@@ -12,7 +12,9 @@ public class UIManager : MonoBehaviour
     {
         text = GameObject.Find("Score").GetComponent<TMPro.TextMeshProUGUI>();
         lifes = GameObject.FindGameObjectsWithTag("life");
-        gameManager = GameManager.Instance;
+        while(gameManager == null) {
+            gameManager = GameManager.Instance;
+        }
         gameManager.LoadBlocks();
     }
 

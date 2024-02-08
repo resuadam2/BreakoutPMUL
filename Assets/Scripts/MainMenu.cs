@@ -5,8 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] AudioSource audioSource;
+
+
     public void PlayButton()
     {
         SceneManager.LoadScene("Nivel1");
+        audioSource.Play();
     }
+
+
+
 }

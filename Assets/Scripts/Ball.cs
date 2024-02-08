@@ -10,6 +10,8 @@ public class Ball : MonoBehaviour
     private bool isMoving = false; // Para evitar que la bola se mueva antes de que el jugador la lance
     // Start is called before the first frame update
     private Vector2 startPos; // Posición inicial de la bola
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip hitSound, brickSound;
 
     void Start()
     {
@@ -30,6 +32,12 @@ public class Ball : MonoBehaviour
             Destroy(collision.gameObject); // Destruimos el bloque
             rb.velocity *= velocityMultiplier; // Aumentamos la velocidad de la bola
             GameManager.Instance.BlockDestroyed(); // Restamos un bloque
+            audioSource.clip = brickSound; // Asignamos el sonido de colisión con un bloque
+            audioSource.Play(); // Reproducimos el sonido
+        } else 
+        {
+            audioSource.clip = hitSound; // Asignamos el sonido de colisión con el jugador
+            audioSource.Play(); // Reproducimos el sonido
         }
         VelocityFix(); // Corregimos la velocidad de la bola
     }
