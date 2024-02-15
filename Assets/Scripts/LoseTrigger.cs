@@ -10,6 +10,7 @@ public class LoseTrigger : MonoBehaviour
         {
             // GameManager.Instance.ReloadScene(); // Recargamos la escena
             GameManager.Instance.LoseLife();
+            GetComponent<AudioSource>().Play();
         }
     }
 }
