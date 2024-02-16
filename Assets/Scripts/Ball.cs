@@ -39,7 +39,7 @@ public class Ball : MonoBehaviour
             // Definimos un aleatorio entre 0 y 1
             float random = Random.value;
             // Si el aleatorio es menor que 0.2 (20% de probabilidad) generamos un powerUp en la posición de la colisión
-            if (random < 0.9)
+            if (random < 0.1f)
             {
                 Instantiate(powerUpPrefab, collision.transform.position, Quaternion.identity);
             }
