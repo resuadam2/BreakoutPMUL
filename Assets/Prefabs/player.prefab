@@ -167,6 +167,7 @@ MonoBehaviour:
   audioSource: {fileID: 8539756750621124182}
   hitSound: {fileID: 8300000, guid: daa0a72e0ff926cbe85f1c25a2800267, type: 3}
   brickSound: {fileID: 8300000, guid: ea90512c18c77a2bdaf8ab2b70448f6b, type: 3}
+  powerUpPrefab: {fileID: 8043102908642934297, guid: c6b65785757d7674eb921a39d297d29f, type: 3}
 --- !u!82 &8539756750621124182
 AudioSource:
   m_ObjectHideFlags: 0

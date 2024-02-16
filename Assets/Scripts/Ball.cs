@@ -13,6 +13,8 @@ public class Ball : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip hitSound, brickSound;
 
+    [SerializeField] private GameObject powerUpPrefab;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -34,6 +36,13 @@ public class Ball : MonoBehaviour
             GameManager.Instance.BlockDestroyed(); // Restamos un bloque
             audioSource.clip = brickSound; // Asignamos el sonido de colisión con un bloque
             audioSource.Play(); // Reproducimos el sonido
+            // Definimos un aleatorio entre 0 y 1
+            float random = Random.value;
+            // Si el aleatorio es menor que 0.2 (20% de probabilidad) generamos un powerUp en la posición de la colisión
+            if (random < 0.9)
+            {
+                Instantiate(powerUpPrefab, collision.transform.position, Quaternion.identity);
+            }
         } else 
         {
             audioSource.clip = hitSound; // Asignamos el sonido de colisión con el jugador

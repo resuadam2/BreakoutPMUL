@@ -86,4 +86,10 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<Player>().ResetPlayer(); // Reseteamos la posición del jugador
         FindObjectOfType<Ball>().ResetBall(); // Reseteamos la posición de la bola
     }
+
+    public void ResetGame()
+    {
+        points = 0; // Reseteamos los puntos
+        vidas = 3; // Reseteamos las vidas
+    }
 }

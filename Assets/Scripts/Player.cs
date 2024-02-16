@@ -43,4 +43,13 @@ public class Player : MonoBehaviour
     {
         transform.position = startPos; // Posición inicial del jugador
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("powerUp")) // Si colisionamos con un powerUp
+        {
+            Destroy(collision.gameObject); // Lo destruimos
+            GameManager.Instance.AddLife(); // Añadimos una vida
+        }
+    }
 }

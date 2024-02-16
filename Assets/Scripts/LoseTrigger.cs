@@ -12,5 +12,10 @@ public class LoseTrigger : MonoBehaviour
             GameManager.Instance.LoseLife();
             GetComponent<AudioSource>().Play();
         }
+
+        if (collision.CompareTag("powerUp")) // Si colisionamos con un powerUp lo destruimos
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }
